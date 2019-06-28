@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <!-- is.couple.article -->
+        <record model="ir.ui.view" id="is_couple_article_form_view">
+            <field name="name">is_couple_article_form_view</field>
+            <field name="model">is.couple.article</field>
+            <field name="arch" type="xml">     
+                <form string="couple article" version="7.0">  
+                    <sheet>
+                        <group>
+                            <field name="name"/> 
+                            <field name="commentaire"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+       <record model="ir.ui.view" id="is_couple_article_tree_view">
+            <field name="name">is_couple_article_tree_view</field>
+            <field name="model">is.couple.article</field>
+            <field name="arch" type="xml">
+                <tree string="couple article">
+                    <field name="name"/> 
+                    <field name="commentaire"/> 
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_couple_article_filter_view" >
+            <field name="name">is_couple_article_filter_view</field>
+            <field name="model">is.couple.article</field>
+            <field name="arch" type="xml">
+                <search string="Recherche">
+                    <field name="name"        filter_domain="[('name'       , 'ilike', self)]"/>
+                    <field name="commentaire" filter_domain="[('commentaire', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="is_couple_article_action">
+            <field name="name">Couple article</field>
+            <field name="res_model">is.couple.article</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- is.dn.articlee -->
+       <record model="ir.ui.view" id="is_dn_article_form_view">
+            <field name="name">is_dn_article_form_view</field>
+            <field name="model">is.dn.article</field>
+            <field name="arch" type="xml">     
+                <form string="dn article" version="7.0">  
+                    <sheet>
+                        <group>
+                            <field name="name"/> 
+                            <field name="commentaire"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_dn_article_tree_view">
+            <field name="name">is_dn_article_tree_view</field>
+            <field name="model">is.dn.article</field>
+            <field name="arch" type="xml">
+                <tree string="DN article">
+                    <field name="name"/> 
+                    <field name="commentaire"/> 
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_dn_article_filter_view" >
+            <field name="name">is_dn_article_filter_view</field>
+            <field name="model">is.dn.article</field>
+            <field name="arch" type="xml">
+                <search string="Recherche">
+                    <field name="name"        filter_domain="[('name'       , 'ilike', self)]"/>
+                    <field name="commentaire" filter_domain="[('commentaire', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="is_dn_article_action">
+            <field name="name">DN article</field>
+            <field name="res_model">is.dn.article</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--is.famille.article --> 
+       <record model="ir.ui.view" id="is_famille_article_form_view">
+            <field name="name">is_famille_article_form_view</field>
+            <field name="model">is.famille.article</field>
+            <field name="arch" type="xml">     
+                <form string="famille article" version="7.0">  
+                    <sheet>
+                        <group>
+                            <field name="name"/> 
+                            <field name="commentaire"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_famille_article_tree_view">
+            <field name="name">is_famille_article_tree_view</field>
+            <field name="model">is.famille.article</field>
+            <field name="arch" type="xml">
+                <tree string="famille article">
+                    <field name="name"/> 
+                    <field name="commentaire"/> 
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_famille_article_filter_view" >
+            <field name="name">is_famille_article_filter_view</field>
+            <field name="model">is.famille.article</field>
+            <field name="arch" type="xml">
+                <search string="Recherche">
+                    <field name="name"        filter_domain="[('name'       , 'ilike', self)]"/>
+                    <field name="commentaire" filter_domain="[('commentaire', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="is_famille_article_action">
+            <field name="name">Famille article</field>
+            <field name="res_model">is.famille.article</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--is.motorisation.article --> 
+       <record model="ir.ui.view" id="is_motorisation_article_form_view">
+            <field name="name">is_motorisation_article_form_view</field>
+            <field name="model">is.motorisation.article</field>
+            <field name="arch" type="xml">     
+                <form string="Motorisation article" version="7.0">  
+                    <sheet>
+                        <group>
+                            <field name="name"/> 
+                            <field name="commentaire"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+       <record model="ir.ui.view" id="is_motorisation_article_tree_view">
+            <field name="name">is_motorisation_article_tree_view</field>
+            <field name="model">is.motorisation.article</field>
+            <field name="arch" type="xml">
+                <tree string="Motorisation article">
+                    <field name="name"/> 
+                    <field name="commentaire"/> 
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_motorisation_article_filter_view" >
+            <field name="name">is_motorisation_article_filter_view</field>
+            <field name="model">is.motorisation.article</field>
+            <field name="arch" type="xml">
+                <search string="Recherche">
+                    <field name="name"        filter_domain="[('name'       , 'ilike', self)]"/>
+                    <field name="commentaire" filter_domain="[('commentaire', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="is_motorisation_article_action">
+            <field name="name">Motorisation article</field>
+            <field name="res_model">is.motorisation.article</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--is.tension.article --> 
+       <record model="ir.ui.view" id="is_tension_article_form_view">
+            <field name="name">is_tension_article_form_view</field>
+            <field name="model">is.tension.article</field>
+            <field name="arch" type="xml">     
+                <form string="Tension article" version="7.0">  
+                    <sheet>
+                        <group>
+                            <field name="name"/> 
+                            <field name="commentaire"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_tension_article_tree_view">
+            <field name="name">is_tension_article_tree_view</field>
+            <field name="model">is.tension.article</field>
+            <field name="arch" type="xml">
+                <tree string="Tension article">
+                    <field name="name"/> 
+                    <field name="commentaire"/> 
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_tension_article_filter_view" >
+            <field name="name">is_tension_article_filter_view</field>
+            <field name="model">is.tension.article</field>
+            <field name="arch" type="xml">
+                <search string="Recherche">
+                    <field name="name"        filter_domain="[('name'       , 'ilike', self)]"/>
+                    <field name="commentaire" filter_domain="[('commentaire', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="is_tension_article_action">
+            <field name="name">Tension article</field>
+            <field name="res_model">is.tension.article</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--is.signalcommande.article --> 
+       <record model="ir.ui.view" id="is_signalcommande_article_form_view">
+            <field name="name">is_signalcommande_article_form_view</field>
+            <field name="model">is.signalcommande.article</field>
+            <field name="arch" type="xml">     
+                <form string="Signal Commande article" version="7.0">  
+                    <sheet>
+                        <group>
+                            <field name="name"/> 
+                            <field name="commentaire"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_signalcommande_article_tree_view">
+            <field name="name">is_signalcommande_article_tree_view</field>
+            <field name="model">is.signalcommande.article</field>
+            <field name="arch" type="xml">
+                <tree string="Signal Commande article">
+                    <field name="name"/> 
+                    <field name="commentaire"/> 
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_signalcommande_article_filter_view" >
+            <field name="name">is_signalcommande_article_filter_view</field>
+            <field name="model">is.signalcommande.article</field>
+            <field name="arch" type="xml">
+                <search string="Recherche">
+                    <field name="name"        filter_domain="[('name'       , 'ilike', self)]"/>
+                    <field name="commentaire" filter_domain="[('commentaire', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="is_signalcommande_article_action">
+            <field name="name">Signal Commande article</field>
+            <field name="res_model">is.signalcommande.article</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- >is.type.vanne.article -->
+       <record model="ir.ui.view" id="is_type_vanne_article_form_view">
+            <field name="name">is_type_vanne_article_form_view</field>
+            <field name="model">is.type.vanne.article</field>
+            <field name="arch" type="xml">     
+                <form string="type vanne article" version="7.0">  
+                    <sheet>
+                        <group>
+                            <field name="name"/> 
+                            <field name="commentaire"/> 
+                        </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_type_vanne_article_tree_view">
+            <field name="name">is_type_vanne_article_tree_view</field>
+            <field name="model">is.type.vanne.article</field>
+            <field name="arch" type="xml">
+                <tree string="Type vanne article">
+                    <field name="name"/> 
+                    <field name="commentaire"/> 
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_type_vanne_article_filter_view" >
+            <field name="name">is_type_vanne_article_filter_view</field>
+            <field name="model">is.type.vanne.article</field>
+            <field name="arch" type="xml">
+                <search string="Recherche">
+                    <field name="name"        filter_domain="[('name'       , 'ilike', self)]"/>
+                    <field name="commentaire" filter_domain="[('commentaire', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="is_type_vanne_article_action">
+            <field name="name">Type vanne article</field>
+            <field name="res_model">is.type.vanne.article</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--product.template --> 
+        <record model="ir.ui.view" id="is_view_product_template_form">
+            <field name="name">is_view_product_template_form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <field name="list_price" position="after">
+                    <field name="is_stock_mini"/>
+                    <field name="is_famille_article"/>
+                    <field name="is_dn_article"/>
+                    <field name="is_diaphragme"/>
+                    <field name="is_contacts_auxiliaires"/>
+                    <field name="is_type_vanne_article"/>
+                    <field name="is_couple_article"/>
+                    <field name="is_motorisation_article"/>
+                    <field name="is_signalcommande_article"/>
+                    <field name="is_tension_article"/>
+                </field>
+                <field name="categ_id" position="after">
+                    <field name="is_code_douanier"/>
+                    <field name="is_origine_article"/>
+                </field>
+            </field>
+        </record>  
+        <record id="is_action_product_form" model="ir.actions.act_window">
+            <field name="name">Articles</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_id" ref="product.product_template_tree_view"/>
+            <field name="context">{"search_default_filter_to_sell":1}</field>
+        </record>
+    </data>
+</odoo>
+

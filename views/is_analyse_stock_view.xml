@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="is_analyse_stock_form_view">
+            <field name="name">is_analyse_stock_form_view</field>
+            <field name="model">is.analyse.stock</field>
+            <field name="arch" type="xml">     
+                <form>  
+
+                    <header>
+                        <button 
+                            string="Accès aux commandes des clients" 
+                            name= "acces_cde_cli_action" type="object" icon="fa-align-justify"
+                        />
+                        <button 
+                            string="Accès aux lignes des commandes des fournisseurs" 
+                            name= "acces_cde_fou_action" type="object" icon="fa-align-justify"
+                        />
+                    </header>
+
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                            </group>
+                            <group>
+                                <field name="stock_mini"/>
+                                <field name="stock"/>
+                                <field name="livraison"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="cde_cli_s1"/>
+                                <field name="cde_cli_s2"/>
+                                <field name="cde_cli_s3"/>
+                                <field name="cde_cli_s4"/>
+                                <field name="cde_cli_sx"/>
+                                <field name="cde_cli_sy"/>
+                            </group>
+                            <group>
+                                <field name="cde_fou"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="stock_7"/>
+                                <field name="stock_28"/>
+                                <field name="stock_terme"/>
+                            </group>
+                            <group>
+                                <field name="reapro_7"/>
+                                <field name="reapro_28"/>
+                                <field name="reapro_terme"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_analyse_stock_tree_view">
+            <field name="name">is_analyse_stock_tree_view</field>
+            <field name="model">is.analyse.stock</field>
+            <field name="arch" type="xml">
+                <tree colors="red:reapro_7 &lt; 0; orange:reapro_28 &lt; 0 ">
+                    <field name="product_id" widget="many2one_clickable"/>
+                    <field name="cde_cli_s1"/>
+                    <field name="cde_cli_s2"/>
+                    <field name="cde_cli_s3"/>
+                    <field name="cde_cli_s4"/>
+                    <field name="cde_cli_sx"/>
+                    <field name="cde_cli_sy"/>
+                    <button 
+                        string="Accès aux commandes des clients" 
+                        name= "acces_cde_cli_action" type="object" icon="fa-align-justify"
+                    />
+                    <field name="cde_fou"/>
+                    <button 
+                        string="Accès aux lignes des commandes des fournisseurs" 
+                        name= "acces_cde_fou_action" type="object" icon="fa-align-justify"
+                    />
+                    <field name="stock_mini"/>
+                    <field name="stock"/>
+                    <field name="stock_7"/>
+                    <field name="stock_28"/>
+                    <field name="stock_terme"/>
+                    <field name="reapro_7"/>
+                    <field name="reapro_28"/>
+                    <field name="reapro_terme"/>
+                    <field name="livraison"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_analyse_stock_search_view" >
+                <field name="name">is_analyse_stock_filter_view</field>
+                <field name="model">is.analyse.stock</field>
+                <field name="arch" type="xml">
+                    <search>
+                        <field name="product_id"/>
+                    </search>
+                </field>
+        </record>
+        <record model="ir.actions.act_window" id="is_analyse_stock_action">
+            <field name="name">Analyse stocks</field>
+            <field name="res_model">is.analyse.stock</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

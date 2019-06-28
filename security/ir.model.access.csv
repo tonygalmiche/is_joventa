@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_is_type_evenement_client,access_is_type_evenement_client,model_is_type_evenement_client,,1,1,1,1
+access_is_evenement_client,access_is_evenement_client,model_is_evenement_client,,1,1,1,1
+access_is_selection_partenaire,access_is_selection_partenaire,model_is_selection_partenaire,,1,1,1,1
+access_is_domaine_partenaire,access_is_domaine_partenaire,model_is_domaine_partenaire,,1,1,1,1
+access_is_famille_article,access_is_famille_article,model_is_famille_article,,1,1,1,1
+access_is_dn_article,access_is_dn_article,model_is_dn_article,,1,1,1,1
+access_is_type_vanne_article,access_is_type_vanne_article,model_is_type_vanne_article,,1,1,1,1
+access_is_couple_article,access_is_couple_article,model_is_couple_article,,1,1,1,1
+access_is_motorisation_article,access_is_motorisation_article,model_is_motorisation_article,,1,1,1,1
+access_is_signalcommande_article,access_is_signalcommande_article,model_is_signalcommande_article,,1,1,1,1
+access_is_tension_article,access_is_tension_article,model_is_tension_article,,1,1,1,1
+access_is_suivi_commande,access_is_suivi_commande,model_is_suivi_commande,,1,1,1,1
+access_is_analyse_stock,access_is_analyse_stock,model_is_analyse_stock,,1,1,1,1

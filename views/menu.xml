@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+        <menuitem id="menu_is_table_commande"  sequence="4"  name="Tables"         parent="sale.sale_menu_root"/>
+        <menuitem id="menu_is_couple_article"         sequence="10"  parent="menu_is_table_commande" action="is_couple_article_action"/>
+        <menuitem id="menu_is_dn_article"             sequence="15"  parent="menu_is_table_commande" action="is_dn_article_action"/>
+        <menuitem id="menu_is_famille_article"        sequence="20"  parent="menu_is_table_commande" action="is_famille_article_action"/>
+        <menuitem id="menu_is_motorisation_article"   sequence="25"  parent="menu_is_table_commande" action="is_motorisation_article_action"/>
+        <menuitem id="menu_is_tension_article"        sequence="30"  parent="menu_is_table_commande" action="is_tension_article_action"/>
+        <menuitem id="menu_is_signalcommande_article" sequence="35"  parent="menu_is_table_commande" action="is_signalcommande_article_action"/>
+        <menuitem id="menu_is_type_vanne_article"     sequence="40"  parent="menu_is_table_commande" action="is_type_vanne_article_action"/>
+        <menuitem id="menu_is_domaine_partenaire"     sequence="45"  parent="menu_is_table_commande" action="is_domaine_partenaire_action"/>
+        <menuitem id="menu_is_selection_partenaire"   sequence="50"  parent="menu_is_table_commande" action="is_selection_partenaire_action"/>
+
+        <!--
+
+        <menuitem id="menu_is_type_evenement_client"  sequence="30"  parent="menu_is_table_commande" action="is_type_evenement_client_action"/>
+
+        <menuitem id="menu_is_suivi_commande"         sequence="92"  parent="menu_is_table_commande" action="is_suivi_commande_action" name="Suivi commande test" />
+        <menuitem 
+            action="is_action_product_form" 
+            id="sale.menu_product_template_action" 
+            parent="sales_team.menu_sales" 
+            sequence="13" 
+        />
+        <menuitem id="sales_team.menu_partner_form"                           action="is_action_partner_form"     parent="sales_team.menu_sales" sequence="2"/>
+        <menuitem id="is_menu_commandes_acceptees" name="Commandes acceptées" action="is_commandes_acceptees"     parent="sales_team.menu_sales" sequence="5"/>
+        <menuitem id="is_menu_commandes_validees"  name="Commandes validées"  action="sale.action_orders"         parent="sales_team.menu_sales" sequence="6"/>
+        <menuitem id="is_menu_evenement_client"                               action="is_evenement_client_action" parent="sales_team.menu_sales" sequence="7" />
+        -->
+
+
+        <menuitem id="is_analyse_menu"        sequence="30"  name="Analyses"      parent="purchase.menu_purchase_root"/>
+
+
+        <!--
+        <menuitem 
+            id="is_analyse_stock_wizard_menu" 
+            sequence="10" 
+            name="Calculer les stocks"   
+            parent="is_analyse_menu" 
+            action="is_analyse_stock_wizard_action" 
+        />
+        -->
+        <menuitem id="is_analyse_stock_menu"  sequence="20"  name="Analyse stock" parent="is_analyse_menu" action="is_analyse_stock_action"/>
+
+        <!--
+        <menuitem id="is_purchase_order_line_menu" parent="purchase.menu_procurement_management" action="is_purchase_order_line_acion" sequence="7" />
+        -->
+
+    </data>
+</odoo>
+
