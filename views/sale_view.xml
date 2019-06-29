@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- sale.order -->
+        <record model="ir.ui.view" id="joventa_view_order_form">
+            <field name="name">joventa.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="attributes">
+                    <attribute name="class">oe_form_sheet_width_wider</attribute>
+                </xpath>
+                <xpath expr="//sheet/group/group/field[@name='partner_id']" position="before">
+                    <field name="is_commande_acceptee"/>
+                    <field name="numero_commande"/>
+                    <field name="devis_origine"/>
+                    <field name="suivi_commande_id"/>
+                    <field name="contact_livraison"/>
+                    <field name="date_validite"/>
+                    <field name="is_date_prevue"/>
+                </xpath>
+                <field name="pricelist_id" position="after">
+                    <field name="note_interne"/>
+                    <field name="is_remise_base" readonly="0"/>
+                </field>
+                <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='qty_delivered']" position="after">
+                    <field name="is_reste_a_livrer"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_view_order_tree">
+            <field name="name">is_view_order_tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="confirmation_date" position="replace">
+                    <field name="date_order" widget="date" />
+                    <field name="is_date_prevue"/>
+                </field>
+             </field>
+        </record>
+        <record id="is_sale_order_line_tree" model="ir.ui.view">
+            <field name="name">is_sale_order_line_tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="order_id"/>
+                    <field name="product_id"/>
+                    <field name="product_uom_qty"/>
+                    <field name="qty_delivered"     sum="Total"/>
+                    <field name="qty_invoiced"      sum="Total"/>
+                    <field name="is_reste_a_livrer" sum="Total"/>
+                    <field name="qty_to_invoice"    sum="Total"/>
+                    <field name="price_subtotal"    sum="Total"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- is.suivi.commande -->
+        <record model="ir.ui.view" id="is_suivi_commande_form_view">
+            <field name="name">is_suivi_commande_form_view</field>
+            <field name="model">is.suivi.commande</field>
+            <field name="arch" type="xml">     
+                <form string="Suivi commande" version="7.0">  
+                    <sheet>
+                        <group>
+                            <field name="name"/> 
+                            <field name="commentaire"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_suivi_commande_tree_view">
+            <field name="name">is_suivi_commande_tree_view</field>
+            <field name="model">is.suivi.commande</field>
+            <field name="arch" type="xml">
+                <tree string="Suivi commande">
+                    <field name="name"/> 
+                    <field name="commentaire"/> 
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="is_suivi_commande_filter_view" >
+            <field name="name">is_suivi_commande_filter_view</field>
+            <field name="model">is.suivi.commande</field>
+            <field name="arch" type="xml">
+                <search string="Recherche Suivi commande">
+                    <field name="name"        filter_domain="[('name'       , 'ilike', self)]"/>
+                    <field name="commentaire" filter_domain="[('commentaire', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+
+
+       <!-- Famille : action -->
+       <record model="ir.actions.act_window" id="is_suivi_commande_action">
+            <field name="name">Suivi commande</field>
+            <field name="res_model">is.suivi.commande</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+
+
+        <record id="is_commandes_acceptees" model="ir.actions.act_window">
+            <field name="name">Commandes acceptées</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <!--<field name="context">{'search_default_my_sale_orders_filter': 1}</field>-->
+            <field name="context">{}</field>
+            <field name="domain">[('state','in',('draft','sent','cancel')),('is_commande_acceptee','=',True)]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </data>
+</odoo>
+
+

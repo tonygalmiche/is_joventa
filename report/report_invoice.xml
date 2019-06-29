@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+
+
+
+
+<template id="is_report_invoice_document" name="is_report_invoice_document" inherit_id="account.report_invoice_document">
+    <xpath expr="//div[hasclass('page')]" position="replace">
+        <div class="page">
+
+            <div class="row">
+
+                <div class="col-xs-5">
+                    <p>
+                    <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % res_company.logo" style="height: 80px;"/><br />
+                    <span t-field="res_company.partner_id.street"/><br />
+                    <span t-field="res_company.partner_id.street2"/><br />
+                    <span t-field="res_company.partner_id.zip"/> <span t-field="res_company.partner_id.city"/><br />
+                    Tél : <span t-field="res_company.partner_id.phone"/><br />
+                    <!--Fax : <span t-field="res_company.partner_id.fax"/><br />-->
+                    <h4><b>http://joventa.fr</b></h4>
+
+                    <img style="height:15mm" t-att-src="'/is_joventa/static/joventa_5_produits.jpg'"/>
+                    </p>
+                    <p><br />
+                    <b>Votre contact : </b><span t-field="o.user_id.name"/><br />
+                    <b>E-mail : </b><span t-field="o.user_id.email"/><br />
+                    <span t-if="o.user_id.partner_id.phone"><span t-field="o.user_id.phone"/><br /> </span>
+                    <!--<span t-if="o.user_id.partner_id.fax"><span t-field="o.user_id.fax"/><br /> </span>-->
+                    </p>
+                    <span t-if="o.name"><b>Votre commande: <span t-field="o.name"/></b><br /></span>
+
+
+
+
+                </div> <p />
+
+
+
+
+
+                <div class="col-xs-6 col-xs-offset-1">
+                    <div style="border-width:5px;border-style:solid;border-color:grey;border-radius:5mm;text-align:center;padding:1mm">
+                        <h3>
+                            <b><span t-if="o.state not in ['draft','sent']">Facture N° </span>
+                            <span t-if="o.state in ['draft','sent']">Facture N° </span>
+                            <span t-field="o.number"/></b><br />
+                            <span>du </span><span t-field="o.date_invoice"  t-field-options='{"format": "dd/MM/yyyy"}' /><br />
+                        </h3>
+                    </div>
+                    <br /><p><br />
+                    <b><span t-if="o.partner_id.parent_id.name"/><span t-field="o.partner_id.name"/></b><br />
+                    <span t-if="o.partner_id.street"><span t-field="o.partner_id.street"/><br /> </span>
+                    <span t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/><br /> </span>
+                    <span t-field="o.partner_id.is_street3"/><br />
+                    <span t-if="o.partner_id.zip"><span t-field="o.partner_id.zip"/> <span t-field="o.partner_id.city"/><br /> </span>
+                    <span t-if="o.partner_id.country_id.name"><span t-field="o.partner_id.country_id.name"/><br /> </span>
+                    </p> 
+                    <div>Code Partenaire : <span t-field="o.partner_id.is_code_partenaire"/></div>
+                    <div>N° Fournisseur : <span t-field="o.partner_id.is_numfournisseur_partenaire"/></div>
+                </div>
+            </div>
+            <p />
+            <div class="row">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Référence</th>
+                            <th>Désignation</th>
+                            <th>Qté</th>
+                            <th class="text-right">P.U. Net HT</th>
+                            <th class="text-right">Montant HT</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <tr t-foreach="o.invoice_line_ids" t-as="l">
+                            <td><span t-field="l.product_id"/></td>
+                            <td><span t-field="l.product_id.description_sale"/></td>               
+                            <td>
+                                <t t-esc="'{:,.0f}'.format(l.quantity)"/>
+
+                                <span t-field="l.uos_id" groups="product.group_uom"/>
+                            </td>
+                            <td class="text-right">
+
+                                <p><t t-esc='"{:,.2f}".format(l.price_unit).replace(","," ").replace(".",",")'/> €</p>
+                            </td>
+                            <td class="text-right">
+                                <p><t t-esc='"{:,.2f}".format(l.price_subtotal).replace(","," ").replace(".",",")'/> €</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="row"> 
+                <div class="col-xs-8">
+                    <div class="row"> 
+                        <div class="col-xs-6">
+                            <p>
+                                <span style="text-decoration:underline">Détails livraison : </span><br />
+                                Bon de livraison : <span t-field="o.origin"/><br />
+                            </p> 
+                        </div>
+                        <div class="col-xs-6">
+                            <p><span style="text-decoration:underline">Adresse de livraison : </span><br />
+							<b><span t-field="o.partner_shipping_id.name"/></b><br />
+                    <span t-if="o.partner_shipping_id.street"><span t-field="o.partner_shipping_id.street"/><br /> </span>
+                    <span t-if="o.partner_shipping_id.street2"><span t-field="o.partner_shipping_id.street2"/><br /> </span>
+                    <span t-if="o.partner_shipping_id.is_street3"><span t-field="o.partner_shipping_id.is_street3"/><br /> </span>
+                    <span t-if="o.partner_shipping_id.zip"><span t-field="o.partner_shipping_id.zip"/> <span t-field="o.partner_shipping_id.city"/><br /> </span>
+                    <span t-if="o.partner_shipping_id.name"><span t-field="o.partner_shipping_id.country_id.name"/><br /> </span>
+                            </p> 
+                        </div>
+
+                    </div>
+                    <br />
+                    <div style="border-width:2px;border-style:solid;border-color:black;text-align:left;padding:0.5mm;font-size:12pt">
+					 <b><span>Date d'échéance de la facture :</span> <span t-field="o.date_due"  t-field-options='{"format": "dd/MM/yyyy"}'  /> <br />
+					 <span>Conditions de réglement : </span> <span t-field="o.payment_term_id"/> <br />
+					 <span>R.I.B. CIC : FR76 1009 6180 0400 0259 6020 170 - BIC CMCIFRPP</span></b>
+                       <!-- <b>  Date d'échéance de la facture : <span t-field="o.date_due"  t-field-options='{"format": "dd/MM/yyyy"}'  /></b> 
+
+                        <p t-if="o.payment_term_id">
+                            <strong>Conditions de réglement : <span t-field="o.payment_term_id"/></strong>
+                        </p>
+-->
+
+
+                        <div style="font-size:10pt"><p>Conformément à la loi de modernisation de l'économie (LME)</p></div>
+                    </div>
+                </div>
+
+
+                <div class="clearfix">
+                    <div id="total" class="row">
+                        <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                            <table class="table table-sm"/>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-xs-4">
+                    <table class="table table-condensed">
+                        <tr class="border-black">
+                            <td><strong>Total Net HT</strong></td>
+                            <td class="text-right">
+                                <p><t t-esc='"{:,.2f}".format(o.amount_untaxed).replace(","," ").replace(".",",")'/> €</p>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Total TVA 20%</td>
+                            <td class="text-right">
+                                <p><t t-esc='"{:,.2f}".format(o.amount_tax).replace(","," ").replace(".",",")'/> €</p>
+
+                            </td>
+                        </tr>
+                        <tr class="border-black">
+                            <td><strong>Total TTC</strong></td>
+                            <td class="text-right">
+                                <p><t t-esc='"{:,.2f}".format(o.amount_total).replace(","," ").replace(".",",")'/> €</p>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br />
+            <div style="font-size:12pt">
+                <b><br /> </b>
+            </div>
+            <div style="font-size:8pt">
+                Pénalités de retard (taux annuel) : 9% - Escompte pour paiement anticipé (taux mensuel) : 0,25% <br />
+                <b>Une indemnité forfaitaire pour frais de recouvrement d'un montant de 40 euros est due en cas de retard de paiement.</b><br />
+                <b>RESERVE de PROPRIETE :</b> Nous réservons la propriété des marchandises jusqu'au paiement du prix par l'acheteur. Notre droit de revendication porte aussi bien sur les marchandises que sur leur prix si elles ont déjà été revendues (Loi du 12 mai 1980).
+            </div><br />
+            <p t-if="o.comment">
+                <strong>Commentaire:</strong>
+                <span t-field="o.comment"/>
+            </p>
+
+
+
+            <!-- TODO : Ne pas supprimer car utilsé par d'autres vues -->
+            <div style="display:none">
+                <div class="row">
+                    <div name="invoice_address" class="col-xs-5 col-xs-offset-7">
+                        <address t-field="o.partner_id"
+                            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                        <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
+                    </div>
+                </div>
+
+                <div name="reference" class="col-xs-2" t-if="o.reference">
+                    <strong>Reference:</strong>
+                    <p t-field="o.reference"/>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </xpath>
+</template>
+
+
+
+</data>
+</odoo>
