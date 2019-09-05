@@ -31,6 +31,7 @@ InfoSaône - Module Odoo 12 pour Joventa
         'views/purchase_view.xml',
         'views/sale_view.xml',                 # Surcharge du bon de commande
         'wizard/is_analyse_stock_wizard_view.xml', 
+        'report/report_templates.xml',
         'report/report_invoice.xml',           # Surcharge PDF Facture
         'report/purchase_order_templates.xml', # Surcharge PDF Commande achat
         'report/report_stockpicking.xml',      # Surcharge PDF livraison

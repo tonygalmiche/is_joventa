@@ -11,6 +11,20 @@
                 <xpath expr="//sheet" position="attributes">
                     <attribute name="class">oe_form_sheet_width_wider</attribute>
                 </xpath>
+
+
+                <xpath expr="//header/button[@name='action_confirm']" position="before">
+                    <button
+                        name="convertir_en_commande"
+                        string="Convertir ce devis en commande"
+                        type="object"
+                        attrs="{'invisible':[('state','in',['sale','done','cancel'])]}"
+                    />
+                </xpath>
+
+
+
+
                 <xpath expr="//sheet/group/group/field[@name='partner_id']" position="before">
                     <field name="is_commande_acceptee"/>
                     <field name="numero_commande"/>

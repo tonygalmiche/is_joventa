@@ -40,6 +40,23 @@ class SaleOrder(models.Model):
     is_date_prevue       = fields.Date(u"Date prévue", help="Date de livraison prévue")
 
 
+    @api.multi
+    def convertir_en_commande(self):
+        for obj in self:
+            copy = obj.copy()
+            copy.devis_origine = obj.id
+            view_id = self.env['ir.model.data'].get_object_reference('is_joventa', 'joventa_view_order_form')[1]
+            return {
+                'type': 'ir.actions.act_window',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'sale.order',
+                'views': [(view_id, 'form')],
+                'view_id': view_id,
+                'res_id': copy.id,
+            }
+
+
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 

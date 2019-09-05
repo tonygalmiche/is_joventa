@@ -15,7 +15,13 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <p>
+
+                            <!--
                             <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % res_company.logo" style="height: 80px;"/><br />
+                            -->
+                            <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" class="float-left" alt="Logo"/><br />
+
+
                             <span t-field="res_company.partner_id.street"/><br />
                             <span t-field="res_company.partner_id.street2"/><br />
                             <span t-field="res_company.partner_id.zip"/> <span t-field="res_company.partner_id.city"/><br />
