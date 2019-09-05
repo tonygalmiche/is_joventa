@@ -201,8 +201,16 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-            <field name="street2" position="after">
-                    <field name="is_street3"/>
+                <field name="street2" position="after">
+                    <field name="is_street3" placeholder="Rue 3..."/>
+                </field>
+                <field name="state_id" position="replace">
+                    <field name="state_id" invisible="1"/>
+                </field>
+                <field name="zip" position="replace"/>
+                <field name="city" position="replace">
+                    <field name="zip"  placeholder="CP"/>
+                    <field name="city" placeholder="Ville"/>
                 </field>
                 <xpath expr="//notebook[@colspan='4']/page[@name='internal_notes']" position="before">
                     <page string="Évènements">
@@ -210,6 +218,7 @@
                             <field name="is_evenement_ids" >
                                 <tree string="Évènements" editable="bottom">
                                     <field name="name"/>
+                                    <field name="createur_id"/>
                                     <field name="type_evenement"/>
                                     <field name="commentaire"/>
                                     <field name="client_id" invisible="1" />
