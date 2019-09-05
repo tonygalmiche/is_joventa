@@ -19,6 +19,7 @@ class IsEvenementClient(models.Model):
     
     client_id      = fields.Many2one('res.partner', u'Partenaire', required=False)
     name           = fields.Date(u"Date", index=True, required=True)
+    createur_id    = fields.Many2one('res.users', "Créateur", readonly=True, default=lambda self: self.env.user)
     type_evenement = fields.Many2one('is.type.evenement.client', u'Type évènement', required=True, ondelete='set null', help="Sélectionnez un type évènement")
     commentaire    = fields.Text(u"Commentaire",size=200)
 
