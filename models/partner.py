@@ -48,7 +48,37 @@ class ResPartner(models.Model):
     _name = "res.partner"
     _description = "Type de production"
     _inherit = 'res.partner'
-    
+
+
+
+    @api.onchange('is_montant_assure')
+    def _compute_encours_facturation(self):
+        cr , uid, context = self.env.args
+        for obj in self:
+            if obj.is_montant_assure>0:
+                id = False
+                if 'params' in context:
+                    if 'id' in context['params']:
+                        id = context['params']['id']
+                if id:
+                    SQL="""
+                        select sum(amount_untaxed_signed)
+                        from account_invoice
+                        where partner_id="""+str(id)+""" and state not in ('cancel','paid') and type='out_invoice'
+                    """
+                    cr.execute(SQL)
+                    result = cr.fetchall()
+                    encours = 0
+                    for row in result:
+                        if row[0]:
+                            encours = round(row[0])
+                    if encours>obj.is_montant_assure:
+                        html = """<div style="background-color:orange;font-weight:bold">"""+str(encours)+"""</div>"""
+                    else:
+                        html = """<div style="background-color:Chartreuse;font-weight:bold">"""+str(encours)+"""</div>"""
+                    obj.is_encours_facturation = html
+
+
     is_evenement_ids             = fields.One2many('is.evenement.client', 'client_id', u'Évènements')
     is_siret                     = fields.Char(u'N°Siret', required=False)
     is_source                    = fields.Char(u'Source', required=False, help="Origine du prospect/client")
@@ -59,5 +89,11 @@ class ResPartner(models.Model):
     is_code_partenaire           = fields.Char(u'Code Partenaire', required=False)
     is_numfournisseur_partenaire = fields.Char(u'N° Fournisseur', required=False)
     is_street3                   = fields.Char(u'Rue 3', required=False)
+    is_montant_assure            = fields.Integer(u'Montant assuré')
+    is_date_debut_assurance      = fields.Date(u"Date de début de l'assurance")
+    is_encours_facturation       = fields.Html(u'Encours de facturation', compute='_compute_encours_facturation', readonly=True)
+
+
+
 
 

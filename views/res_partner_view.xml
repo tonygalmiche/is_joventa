@@ -212,6 +212,11 @@
                     <field name="zip"  placeholder="CP"/>
                     <field name="city" placeholder="Ville"/>
                 </field>
+                <field name="vat" position="after">
+                    <field name="is_montant_assure"/>
+                    <field name="is_date_debut_assurance"              attrs="{'invisible': [('is_montant_assure', '=', 0)]}"/>
+                    <field name="is_encours_facturation" widget="html" attrs="{'invisible': [('is_montant_assure', '=', 0)]}"/>
+                </field>
                 <xpath expr="//notebook[@colspan='4']/page[@name='internal_notes']" position="before">
                     <page string="Évènements">
                         <group>
