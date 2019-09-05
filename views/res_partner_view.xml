@@ -204,14 +204,22 @@
                 <field name="street2" position="after">
                     <field name="is_street3" placeholder="Rue 3..."/>
                 </field>
+
+
+
+                <!--
                 <field name="state_id" position="replace">
                     <field name="state_id" invisible="1"/>
                 </field>
                 <field name="zip" position="replace"/>
                 <field name="city" position="replace">
-                    <field name="zip"  placeholder="CP"/>
-                    <field name="city" placeholder="Ville"/>
+                    <field name="zip"  placeholder="CP"/> 
+                    <field name="state_id" readonly="1"/> 
+                    <field name="city" placeholder="Ville"/> 
                 </field>
+                -->
+
+
                 <field name="vat" position="after">
                     <field name="is_montant_assure"/>
                     <field name="is_date_debut_assurance"              attrs="{'invisible': [('is_montant_assure', '=', 0)]}"/>
