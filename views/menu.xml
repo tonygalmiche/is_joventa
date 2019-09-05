@@ -14,8 +14,9 @@
         <menuitem id="menu_is_type_evenement_client"  sequence="55"  parent="menu_is_table_commande" action="is_type_evenement_client_action"/>
         <menuitem id="menu_is_suivi_commande"         sequence="60"  parent="menu_is_table_commande" action="is_suivi_commande_action" name="Suivi commande test" />
 
-        <menuitem id="is_menu_commandes_validees"  name="Commandes validées"  action="sale.action_orders"         parent="sale.sale_order_menu" sequence="2"/>
-        <menuitem id="is_menu_commandes_acceptees" name="Commandes acceptées" action="is_commandes_acceptees"     parent="sale.sale_order_menu" sequence="2"/>
+
+        <menuitem id="is_menu_commandes_acceptees" name="Commandes acceptées" action="is_commandes_acceptees"     parent="sale.sale_order_menu"/>
+        <menuitem id="is_menu_commandes_validees"  name="Commandes validées"  action="sale.action_orders"         parent="sale.sale_order_menu"/>
         <menuitem id="sales_team.menu_partner_form" name="Clients (Liste)"    action="is_action_partner_form"     parent="sale.sale_order_menu" sequence="7"/>
         <menuitem id="is_menu_evenement_client"                               action="is_evenement_client_action" parent="sale.sale_order_menu" sequence="8" />
         <menuitem 

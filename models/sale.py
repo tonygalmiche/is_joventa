@@ -36,7 +36,7 @@ class SaleOrder(models.Model):
     numero_commande      = fields.Char(u"N° commande", size=255)
     devis_origine        = fields.Many2one('sale.order', u'Devis Origine')
     is_remise_base       = fields.Integer(u'Remise de base (%)', required=False)
-    date_validite        = fields.Date(u"Date de validité")
+    #date_validite        = fields.Date(u"Date de validité")
     is_date_prevue       = fields.Date(u"Date prévue", help="Date de livraison prévue")
 
 

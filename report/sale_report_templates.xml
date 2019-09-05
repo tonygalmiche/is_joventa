@@ -142,7 +142,7 @@
 						<span style="text-decoration:underline">Contact de livraison : </span><br />
                             <b><span t-field="doc.contact_livraison"/></b><br />                          
                             <p /><b><span t-if="doc.state not in ['draft','sent']" style="border-width:1px;border-style:solid;border-color:black;border-radius:3mm;text-align:center;padding:1mm">Livraison le <span t-field="doc.is_date_prevue"/></span>
-                            <span t-if="doc.state in ['draft','sent']">Validité de l'offre: <span t-field="doc.date_validite"/></span></b><br /><p />
+                            <span t-if="doc.state in ['draft','sent']">Validité de l'offre: <span t-field="doc.validity_date"/></span></b><br /><p />
                             
                             <!--
                             <div style="border-width:2px;border-style:solid;border-color:black;border-radius:2mm;text-align:center;padding:0.5mm">

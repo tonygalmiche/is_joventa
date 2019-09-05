@@ -17,7 +17,7 @@
                     <field name="devis_origine"/>
                     <field name="suivi_commande_id"/>
                     <field name="contact_livraison"/>
-                    <field name="date_validite"/>
+                    <!--<field name="date_validite"/>-->
                     <field name="is_date_prevue"/>
                 </xpath>
                 <field name="pricelist_id" position="after">
@@ -103,12 +103,6 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-
-
-
-
-
-
         <record id="is_commandes_acceptees" model="ir.actions.act_window">
             <field name="name">Commandes acceptées</field>
             <field name="type">ir.actions.act_window</field>
@@ -121,20 +115,6 @@
             <field name="domain">[('state','in',('draft','sent','cancel')),('is_commande_acceptee','=',True)]</field>
             <field name="search_view_id" ref="sale.view_sales_order_filter"/>
         </record>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </data>
 </odoo>
 
