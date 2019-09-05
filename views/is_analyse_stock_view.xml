@@ -63,7 +63,18 @@
             <field name="name">is_analyse_stock_tree_view</field>
             <field name="model">is.analyse.stock</field>
             <field name="arch" type="xml">
+
+
+
+                <!--
                 <tree colors="red:reapro_7 &lt; 0; orange:reapro_28 &lt; 0 ">
+
+decoration-danger="(qty_to_consume &lt; qty_done) or (qty_done &gt; qty_reserved)"
+
+                -->
+
+                <tree decoration-danger="reapro_7 &lt; 0" decoration-warning="reapro_28 &lt; 0">
+
                     <field name="product_id" widget="many2one_clickable"/>
                     <field name="cde_cli_s1"/>
                     <field name="cde_cli_s2"/>
