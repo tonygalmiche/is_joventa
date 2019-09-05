@@ -45,6 +45,7 @@ class SaleOrder(models.Model):
         for obj in self:
             copy = obj.copy()
             copy.devis_origine = obj.id
+            copy.is_commande_acceptee = True
             view_id = self.env['ir.model.data'].get_object_reference('is_joventa', 'joventa_view_order_form')[1]
             return {
                 'type': 'ir.actions.act_window',
