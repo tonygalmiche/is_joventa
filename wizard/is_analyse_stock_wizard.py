@@ -23,7 +23,9 @@ class IsAnalyseStockWizard(models.TransientModel):
             select sum(sol.product_uom_qty-sol.qty_delivered)
             from sale_order so inner join sale_order_line sol on sol.order_id=so.id
             where 
-                sol.product_id="""+str(product_id)+"""
+                sol.product_id="""+str(product_id)+""" and
+                so.is_commande_acceptee='t' and
+                so.state not in ('cancel')
         """
         if date_debut:
             sql=sql+" and so.is_date_prevue>='"+str(date_debut)+"'"

@@ -35,7 +35,11 @@ class IsAnalyseStock(models.Model):
                 'view_mode': 'tree,form',
                 'view_type': 'form',
                 'res_model': 'sale.order.line',
-                'domain': [('product_id','=',obj.product_id.id)],
+                'domain': [
+                    ('product_id','=',obj.product_id.id),
+                    ('order_id.state', 'not in', ['cancel']),
+                    ('order_id.is_commande_acceptee', '=', True),
+                ],
                 'context':{},
                 'type': 'ir.actions.act_window',
             }
@@ -60,9 +64,17 @@ class IsAnalyseStock(models.Model):
         #for obj in self:
         #    print(obj)
 
+        #** Recherche du premier partner trouvé ********************************
+        partner = False
+        for obj in self:
+            for line in obj.product_id.seller_ids:
+                if line.name:
+                    partner = line.name
+        if not partner:
+            user = self.env['res.users'].search([('id','=',self._uid)],limit=1)[0]
+            partner = user.partner_id
+        #***********************************************************************
 
-        user = self.env['res.users'].search([('id','=',self._uid)],limit=1)[0]
-        partner = user.partner_id
         vals={
             'partner_id'        : partner.id,
             'fiscal_position_id': partner.property_account_position_id.id,
@@ -71,6 +83,10 @@ class IsAnalyseStock(models.Model):
         if order:
             order_line_obj = self.env['purchase.order.line']
             for obj in self:
+                price_unit = 0
+                for line in obj.product_id.seller_ids:
+                    if line.name:
+                        price_unit = line.name.id
                 obj.order_id = order.id
                 qt = -obj.reapro_28
                 if qt<0:
@@ -82,7 +98,7 @@ class IsAnalyseStock(models.Model):
                     'product_id'    : obj.product_id.id,
                     'name'          : obj.product_id.name,
                     'product_uom'   : obj.product_id.uom_id.id ,
-                    'price_unit'    : 0,
+                    'price_unit'    : price_unit,
                     'product_qty'   : qt,
                     'date_planned'  : date_planned,
                 }
