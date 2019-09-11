@@ -3,63 +3,28 @@
 <data>
 
 
-<!-- Permet de remplacer complètement le header -->
-
-
-
-<!--
-<template id="is_external_layout_header" name="is_external_layout_header" inherit_id="report.external_layout_header">
-    <xpath expr="//div[hasclass('header')]" position="replace">
-
-        <div class="header"  style="display:none">
-            <div class="row">
-                <div class="col-xs-3">
-                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
-                </div>
-                <div class="col-xs-9 text-right" style="margin-top:20px;" t-field="company.rml_header1"/>
-            </div>
-            <div class="row zero_min_height">
-                <div class="col-xs-12">
-                    <div style="border-bottom: 1px solid black;"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6" name="company_address">
-                    <span t-field="company.partner_id"
-                        t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
-                        style="border-bottom: 1px solid black; display:inline-block;"/>
-                </div>
-            </div>
-        </div>
-    </xpath>
-</template>
--->
-
-
-
 <template id="is_report_saleorder_document" name="is_report_saleorder_document" inherit_id="sale.report_saleorder_document">
+    <t t-set="address" position="replace"/>
     <xpath expr="//div[hasclass('page')]" position="replace">
         <div class="page">
             <div class="oe_structure"/>
             <div class="row">
-                <div class="col-xs-5">
+                <div class="col-6">
                     <p>
-                    <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % res_company.logo" style="height: 80px;"/><br />
-                    <span t-field="res_company.partner_id.street"/><br />
-                    <span t-field="res_company.partner_id.street2"/><br />
-                    <span t-field="res_company.partner_id.zip"/> <span t-field="res_company.partner_id.city"/><br />
-                    Tél :  <span t-field="res_company.partner_id.phone"/><br />
-                    <!--Fax : <span t-field="res_company.partner_id.fax"/><br />-->
-                    <h4><b>http://joventa.fr</b></h4>
-                    <img style="height:15mm" t-att-src="'/is_joventa/static/joventa_5_produits.jpg'"/>
-                    </p><p><br />
-                    <b>Votre contact : </b><span t-field="doc.user_id.name"/><br />
-                                        <b>E-mail : </b><span t-field="doc.user_id.email"/><br />
-                    <span t-if="doc.user_id.partner_id.phone"><span t-field="doc.user_id.phone"/><br /> </span>
-                    <!--<span t-if="doc.user_id.partner_id.fax"><span t-field="doc.user_id.fax"/><br /> </span>-->
+                        <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" style="max-height: 80px;" alt="Logo"/><br />
+                        <span t-field="res_company.partner_id.street"/><br />
+                        <span t-field="res_company.partner_id.street2"/><br />
+                        <span t-field="res_company.partner_id.zip"/> <span t-field="res_company.partner_id.city"/><br />
+                        Tél :  <span t-field="res_company.partner_id.phone"/><br />
+                        <h4><b>http://joventa.fr</b></h4>
+                        <img style="height:15mm" t-att-src="'/is_joventa/static/joventa_5_produits.jpg'"/>
+                        </p><p><br />
+                        <b>Votre contact : </b><span t-field="doc.user_id.name"/><br />
+                                            <b>E-mail : </b><span t-field="doc.user_id.email"/><br />
+                        <span t-if="doc.user_id.partner_id.phone"><span t-field="doc.user_id.phone"/><br /> </span>
                     </p>
                 </div>
-                <div class="col-xs-6 col-xs-offset-1">
+                <div class="col-6">
                     <div style="border-width:5px;border-style:solid;border-color:grey;border-radius:5mm;text-align:center;padding:1mm">
                         <h3>
                             <b><span t-if="doc.state not in ['draft','sent']">AR de commande N° </span>
@@ -86,13 +51,13 @@
                 </div>
             </div>
             <div class="row" style="margin-left:0px">
-		
-			<p> <b><span t-if="doc.state not in ['draft','sent']"><span style="text-decoration:underline" t-if="doc.client_order_ref">Votre commande : <span t-field="doc.client_order_ref"/></span></span> </b>
-				<b><span t-if="doc.state in ['draft','sent']"><span style="text-decoration:underline" t-if="doc.client_order_ref">Référence Devis : <span t-field="doc.client_order_ref"/></span></span> </b>
-			</p>			
-			<!--
+        
+            <p> <b><span t-if="doc.state not in ['draft','sent']"><span style="text-decoration:underline" t-if="doc.client_order_ref">Votre commande : <span t-field="doc.client_order_ref"/></span></span> </b>
+                <b><span t-if="doc.state in ['draft','sent']"><span style="text-decoration:underline" t-if="doc.client_order_ref">Référence Devis : <span t-field="doc.client_order_ref"/></span></span> </b>
+            </p>            
+            <!--
                 <p> <b><span style="text-decoration:underline" t-if="doc.client_order_ref">Votre commande : <span t-field="doc.client_order_ref"/></span></b><br />  </p>
-				-->
+                -->
                 <div style="font-size:10pt">
                     <i>Nous vous remercions pour votre commande. Les spécifications techniques indiquées sont nominales et conformes aux normes généralement admises. 
                     Nous déclinons toute responsabilité en cas de mauvaise application ou d'utilisation inappropriée de nos produits. </i>
@@ -136,10 +101,10 @@
 
 
             <div class="row">
-                <div class="col-xs-8">
+                <div class="col-8">
                     <div class="row">
-                        <div class="col-xs-6">
-						<span style="text-decoration:underline">Contact de livraison : </span><br />
+                        <div class="col-6">
+                        <span style="text-decoration:underline">Contact de livraison : </span><br />
                             <b><span t-field="doc.contact_livraison"/></b><br />                          
                             <p /><b><span t-if="doc.state not in ['draft','sent']" style="border-width:1px;border-style:solid;border-color:black;border-radius:3mm;text-align:center;padding:1mm">Livraison le <span t-field="doc.is_date_prevue"/></span>
                             <span t-if="doc.state in ['draft','sent']">Validité de l'offre: <span t-field="doc.validity_date"/></span></b><br /><p />
@@ -151,8 +116,8 @@
                             </div>
                             -->
                         </div>
-						
-                        <div class="col-xs-6">
+                        
+                        <div class="col-6">
                              <p><span style="text-decoration:underline">Adresse de livraison : </span><br />
                                 <b><span t-field="doc.partner_shipping_id.name"/></b><br />
                                 <span t-if="doc.partner_shipping_id.street"><span t-field="doc.partner_shipping_id.street"/><br /> </span>
@@ -161,10 +126,10 @@
                                 <span t-if="doc.partner_shipping_id.country_id.name"><span t-field="doc.partner_shipping_id.country_id.name"/><br /> </span>
                                 </p> 
                         </div>
-						
+                        
                     </div>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-4">
                     <table class="table table-condensed">
                         <tr class="border-black">
                             <td><strong>Total Net € HT</strong></td>
